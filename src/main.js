@@ -5,9 +5,13 @@ import VueAxios from 'vue-axios';
 
 Vue.use(VueAxios, axios)
 import App from './App.vue'
+import env from './env'
 
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 8000;
+//根据环境变量获取不同的请求地址
+axios.defaults.baseUR = env.baseURL
+
 //接口错误拦截
 axios.interceptors.response.use(function (response) {
   const res = response.data;
