@@ -5,10 +5,11 @@ import VueAxios from 'vue-axios';
 
 Vue.use(VueAxios, axios)
 import App from './App.vue'
+
 // import env from './env'
 
 //mock开关
-const mock = true;
+const mock = false;
 //import是预编译加载，所以使用require
 if (mock) {
   require('./mock/api')

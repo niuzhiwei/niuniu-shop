@@ -12,7 +12,7 @@ import NavFooter from "../components/NavFooter";
 export default {
   components: {
     NavHeader,
-    NavFooter,
+    NavFooter
   },
   data() {
     return {};
