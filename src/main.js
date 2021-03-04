@@ -2,10 +2,9 @@ import Vue from 'vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios';
+import VueLazyload from 'vue-lazyload'
 
-Vue.use(VueAxios, axios)
 import App from './App.vue'
-
 // import env from './env'
 
 //mock开关
@@ -35,7 +34,14 @@ axios.interceptors.response.use(function (response) {
   }
 })
 
-Vue.config.productionTip = false
+Vue.use(VueAxios, axios)
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  loading: '/imgs/loading-svg/loading-bars.svg',
+  attempt: 1
+})
+Vue.config.productionTip = false;
+
 
 new Vue({
   router,

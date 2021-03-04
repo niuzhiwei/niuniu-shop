@@ -55,7 +55,7 @@
                     target='_blank'
                   >
                     <div class="pro-img">
-                      <img :src="phone.mainImage">
+                      <img v-lazy="phone.mainImage">
                     </div>
                     <div class="pro-name">{{phone.name}}</div>
                     <div class="pro-price">{{phone.price | currency}}</div>
