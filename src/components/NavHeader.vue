@@ -15,6 +15,11 @@
           >{{username}}</a>
           <a
             href="javacript:;"
+            v-if="username"
+            @click="logout"
+          >退出</a>
+          <a
+            href="javacript:;"
             v-if="!username"
             @click="goToLogin"
           >登录</a>
@@ -165,7 +170,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "nav-header",
   data() {
@@ -184,8 +189,13 @@ export default {
   },
   mounted() {
     this.getProductList();
+    const params = this.$route.params;
+    if (params && params.from === "login") {
+      this.getCartCount();
+    }
   },
   methods: {
+    ...mapActions(["saveUserName", "saveCartCount"]),
     getProductList() {
       this.axios
         .get("/products", {
@@ -196,11 +206,24 @@ export default {
             res.list.length > 6 ? res.list.slice(0, 6) : res.list;
         });
     },
+    logout() {
+      this.axios.post("/user/logout").then(() => {
+        this.$message.success("退出登录成功!");
+        this.$cookie.set("userId", "", { expires: "-1" });
+        this.saveUserName("");
+        this.saveCartCount(0);
+      });
+    },
     goToLogin() {
       this.$router.push("/login");
     },
     goToCart() {
       this.$router.push("/cart");
+    },
+    getCartCount() {
+      this.axios.get("/carts/products/sum").then((res = 0) => {
+        this.saveCartCount(res);
+      });
     },
   },
 };
