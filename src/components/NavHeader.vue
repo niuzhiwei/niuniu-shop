@@ -23,13 +23,11 @@
             v-if="username"
           >我的订单</a>
           <a
+            @click="goToCart"
             href="javacript:;"
             class='my-cart'
           >
-            <span
-              class="icon-cart"
-              @click="goToCara"
-            ></span>
+            <span class="icon-cart"></span>
             购物车({{cartCount}})
           </a>
         </div>
@@ -201,7 +199,7 @@ export default {
     goToLogin() {
       this.$router.push("/login");
     },
-    goToCara() {
+    goToCart() {
       this.$router.push("/cart");
     },
   },

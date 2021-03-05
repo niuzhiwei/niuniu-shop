@@ -193,7 +193,7 @@ import ServiceBar from "../components/ServiceBar.vue";
 import Modal from "../components/Modal.vue";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
-
+import { mapActions } from "vuex";
 export default {
   components: {
     ServiceBar,
@@ -260,6 +260,7 @@ export default {
     this.getProductList();
   },
   methods: {
+    ...mapActions(["saveCartCount"]),
     getProductList() {
       this.axios
         .get("/products", { params: { categoryId: 100012, pageSize: 14 } })
@@ -271,11 +272,10 @@ export default {
       this.axios
         .post("/carts", { productId: id, selected: true })
         .then((res) => {
-          console.log(res);
-        })
-        .catch(() => {
+          this.saveCartCount(res.cartTotalQuantity);
           this.showModal = true;
-        });
+        })
+        .catch(() => {});
     },
     goToCart() {
       this.$router.push("/cart");
