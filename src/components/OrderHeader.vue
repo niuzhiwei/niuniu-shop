@@ -40,6 +40,7 @@ export default {
 <style lang='scss' scoped>
 .order-header {
   padding: 30px 0;
+  border-bottom: 2px solid #ff6600;
   .container {
     .header-logo {
       float: left;
@@ -51,15 +52,17 @@ export default {
       line-height: 55px;
     }
     .title {
-      font-size: 28px;
       float: left;
-      color: #333;
       margin-left: 54px;
+      h2 {
+        font-size: 28px;
+        color: #333;
+      }
       span {
         font-size: 14px;
         margin-left: 17px;
         color: #999;
-        font-weight: bold;
+        font-weight: 200;
       }
     }
     .username {

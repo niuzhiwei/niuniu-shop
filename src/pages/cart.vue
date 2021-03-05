@@ -120,7 +120,7 @@ export default {
         quantity -= 1;
       } else if (type === "+") {
         if (quantity > item.productStock) {
-          alert("购买商品不能超过库存数量");
+          this.$message.warning("购买商品不能超过库存数量");
           return;
         }
         quantity += 1;
@@ -138,6 +138,7 @@ export default {
     },
     delProduct(item) {
       this.axios.delete(`/carts/${item.productId}`).then((res) => {
+        this.$message.success("删除成功！");
         this.renderData(res);
       });
     },
@@ -159,7 +160,7 @@ export default {
     order() {
       let isCheck = this.list.every((item) => !item.productSelected);
       if (isCheck) {
-        alert("请选择一件商品");
+        this.$message.warning("请选择一件商品");
       } else {
         this.$router.push("/order/confirm");
       }

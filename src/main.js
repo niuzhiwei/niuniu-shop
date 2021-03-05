@@ -5,6 +5,10 @@ import VueAxios from 'vue-axios';
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie';
 import store from './store'
+import 'element-ui/lib/theme-chalk/index.css';
+import {
+  Message
+} from 'element-ui';
 
 import App from './App.vue'
 // import env from './env'
@@ -36,11 +40,12 @@ axios.interceptors.response.use(function (response) {
     }
     return Promise.reject(res);
   } else {
-    alert(res.message)
+    Message.warning(res.message)
     return Promise.reject(res);
   }
 })
 
+Vue.prototype.$message = Message;
 Vue.use(VueAxios, axios)
 Vue.use(VueCookie)
 Vue.use(VueLazyload, {
