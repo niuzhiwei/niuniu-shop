@@ -267,16 +267,15 @@ export default {
           this.phoneList = [res.list.slice(6, 10), res.list.slice(10, 14)];
         });
     },
-    addCart() {
-      this.showModal = true;
-      // this.axios
-      //   .post("/carts", { productId: id, selected: true })
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch(() => {
-      //     this.showModal = true;
-      //   });
+    addCart(id) {
+      this.axios
+        .post("/carts", { productId: id, selected: true })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(() => {
+          this.showModal = true;
+        });
     },
     goToCart() {
       this.$router.push("/cart");
@@ -392,6 +391,11 @@ export default {
       display: flex;
       .banner-left {
         margin-right: 16px;
+        transition: all 0.2s;
+        &:hover {
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          transform: translate3d(0, -2px, 0);
+        }
         img {
           width: 224px;
           height: 619px;
@@ -410,6 +414,11 @@ export default {
             height: 302px;
             background-color: #fff;
             text-align: center;
+            transition: all 0.2s;
+            &:hover {
+              box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+              transform: translate3d(0, -2px, 0);
+            }
             span {
               display: inline-block;
               font-size: 14px;

@@ -30,7 +30,7 @@
               class="icon-cart"
               @click="goToCara"
             ></span>
-            购物车
+            购物车({{cartCount}})
           </a>
         </div>
       </div>
@@ -167,13 +167,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "nav-header",
   data() {
     return {
-      username: "",
       phoneList: [],
     };
+  },
+  computed: {
+    ...mapState(["username", "cartCount"]),
   },
   filters: {
     currency(val) {
@@ -226,6 +229,7 @@ export default {
         background-color: #ff6600;
         text-align: center;
         color: #fff;
+        margin-right: 0;
         .icon-cart {
           @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
           margin-right: 4px;
