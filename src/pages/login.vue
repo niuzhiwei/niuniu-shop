@@ -63,7 +63,7 @@ export default {
       this.axios.post("/user/login", { username, password }).then((res) => {
         const { id } = res;
         this.userId = id;
-        this.$cookie.set("userId", this.userId, { expires: "1M" });
+        this.$cookie.set("userId", this.userId, { expires: "Session" });
         this.saveUserName(res.username);
         this.$router.push({
           name: "index",

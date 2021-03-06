@@ -40,7 +40,7 @@ axios.interceptors.response.use(function (response) {
     }
     return Promise.reject(res);
   } else {
-    Message.warning(res.message)
+    Message.warning(res.msg)
     return Promise.reject(res);
   }
 })
