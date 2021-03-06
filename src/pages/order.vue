@@ -33,7 +33,7 @@ export default {
         this.title = "订单列表";
         this.tip = "请谨防钓鱼链接或诈骗电话";
         break;
-      case "/order/pay":
+      case ("/order/pay", "/order/alipay"):
         this.title = "订单支付";
         this.tip = "请谨防钓鱼链接或诈骗电话";
         break;

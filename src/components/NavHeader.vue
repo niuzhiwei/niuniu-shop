@@ -26,6 +26,7 @@
           <a
             href="javacript:;"
             v-if="username"
+            @click="goOrderList"
           >我的订单</a>
           <a
             @click="goToCart"
@@ -224,6 +225,9 @@ export default {
       this.axios.get("/carts/products/sum").then((res = 0) => {
         this.saveCartCount(res);
       });
+    },
+    goOrderList() {
+      this.$router.push("/order/list");
     },
   },
 };
