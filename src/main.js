@@ -3,11 +3,14 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios';
 import VueLazyload from 'vue-lazyload'
+import infiniteScroll from 'vue-infinite-scroll'
 import VueCookie from 'vue-cookie';
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css';
 import {
-  Message
+  Message,
+  Pagination,
+  Button
 } from 'element-ui';
 
 import App from './App.vue'
@@ -52,6 +55,9 @@ axios.interceptors.response.use(function (response) {
 Vue.prototype.$message = Message;
 Vue.use(VueAxios, axios)
 Vue.use(VueCookie)
+Vue.use(Pagination);
+Vue.use(Button);
+Vue.use(infiniteScroll)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   loading: '/imgs/loading-svg/loading-bars.svg',

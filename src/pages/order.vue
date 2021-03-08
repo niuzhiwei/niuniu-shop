@@ -23,23 +23,40 @@ export default {
       tip: "",
     };
   },
+  watch: {
+    $route: {
+      handler(newVal) {
+        this.handleOrderHeader(newVal.path);
+      },
+      deep: true,
+    },
+  },
   mounted() {
     const path = this.$route.path;
-    switch (path) {
-      case "/order/confirm":
-        this.title = "订单确认";
-        break;
-      case "/order/list":
-        this.title = "订单列表";
-        this.tip = "请谨防钓鱼链接或诈骗电话";
-        break;
-      case ("/order/pay", "/order/alipay"):
-        this.title = "订单支付";
-        this.tip = "请谨防钓鱼链接或诈骗电话";
-        break;
-      default:
-        break;
-    }
+    this.handleOrderHeader(path);
+  },
+  methods: {
+    handleOrderHeader(path) {
+      switch (path) {
+        case "/order/confirm":
+          this.title = "订单确认";
+          break;
+        case "/order/list":
+          this.title = "订单列表";
+          this.tip = "请谨防钓鱼链接或诈骗电话";
+          break;
+        case "/order/pay":
+          this.title = "订单支付";
+          this.tip = "请谨防钓鱼链接或诈骗电话";
+          break;
+        case "/order/alipay":
+          this.title = "订单支付";
+          this.tip = "请谨防钓鱼链接或诈骗电话";
+          break;
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
