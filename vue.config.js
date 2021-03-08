@@ -17,5 +17,5 @@ module.exports = {
         config.plugins.delete('prefetch')
     },
     publicPath: process.env.NODE_ENV === 'production' ?
-        '/niuniu-shop/' : '/'
+        './' : '/'
 }
